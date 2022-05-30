@@ -829,6 +829,18 @@ class BinanceSocketManager:
         """
         return self._get_futures_socket(symbol.lower() + '@depth' + str(depth), futures_type=futures_type)
 
+
+    def futures_recent_trades_socket(self, symbol: str, futures_type=FuturesType.USD_M):
+        """Subscribe to a latest completed trades stream
+
+        https://binance-docs.github.io/apidocs/voptions/en/#market-streams-payload-latest-completed-trades
+
+        :param symbol: required
+        :type symbol: str
+        """
+        return self._get_futures_socket(symbol.lower() + '@trade', futures_type=futures_type)
+
+
     def symbol_mark_price_socket(self, symbol: str, fast: bool = True, futures_type: FuturesType = FuturesType.USD_M):
         """Start a websocket for a symbol's futures mark price
         https://binance-docs.github.io/apidocs/futures/en/#mark-price-stream
